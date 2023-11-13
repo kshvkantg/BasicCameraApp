@@ -35,8 +35,9 @@ find_package(OpenCV REQUIRED)
 add_library(
         ${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
-        native-lib.cpp)
-
+        native-lib.cpp
+        opencv-utils.cpp
+)
 find_library(jnigraphics-lib jnigraphics)
 
 # Specifies libraries CMake should link to your target library. You
@@ -45,6 +46,6 @@ find_library(jnigraphics-lib jnigraphics)
 target_link_libraries(${CMAKE_PROJECT_NAME}
         # List libraries link to the target library
         android
-        log
         ${OpenCV_LIBS}
+        ${jnigraphics-lib}
         )
